@@ -1,0 +1,4 @@
+login:    your_login
+password: your_password
+host:     proxy_host
+port:     proxy_port

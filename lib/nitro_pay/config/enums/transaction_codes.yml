@@ -1,0 +1,31 @@
+transaction_code:
+        0:
+          status: pending
+          msg: Transação Criada
+        1:
+          status: pending
+          msg: Transação em Andamento
+        2:
+          status: pending
+          msg: Transação Autenticada
+        3:
+          status: error
+          msg: Transação não Autenticada
+        4:
+          status: pending
+          msg: Transação Autorizada
+        5:
+          status: error
+          msg: Transação não Autorizada
+        6:
+          status: charged
+          msg: Transação Capturada
+        9:
+          status: error
+          msg: Transação Cancelada
+        10:
+          status: pending
+          msg: Transação em Autenticação
+        12:
+          status: pending
+          msg: Transação em Cancelamento

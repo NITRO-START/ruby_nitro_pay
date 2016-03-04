@@ -1,0 +1,18 @@
+recurrence_periods:
+  # Daily
+  daily:      1
+
+  # Weekly
+  weekly:     2
+
+  # Monthly
+  monthly:    3
+
+  # Bimonthly
+  bimonthly:  4
+
+  # Semiannual
+  semiannual: 5
+
+  # Annual
+  annual:     6

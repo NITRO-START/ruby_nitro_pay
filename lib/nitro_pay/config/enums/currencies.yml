@@ -1,0 +1,35 @@
+currencies:
+  # SampleObj
+- id:         0
+  name:       Nil
+  acronym:    nil$
+  iso_code:   NIL
+  iso_number: 000
+
+  # Real
+- id:         1
+  name:       Real
+  acronym:    R$
+  iso_code:   BRL
+  iso_number: 986
+
+  # Euro
+- id:         2
+  name:       Euro
+  acronym:    €
+  iso_code:   EUR
+  iso_number: 978
+
+  # US Dollar
+- id:         3
+  name:       US Dollar
+  acronym:    US$
+  iso_code:   USD
+  iso_number: 840
+
+  # CAD Dollar
+- id:         4
+  name:       CAD Dollar
+  acronym:    CAD$
+  iso_code:   CAD
+  iso_number: 124

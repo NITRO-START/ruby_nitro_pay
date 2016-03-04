@@ -1,0 +1,45 @@
+brands:
+  # SampleObj
+- id:       0
+  name:     Nil
+  username: nil
+
+  # VISA
+- id:       1
+  name:     VISA
+  username: visa
+
+  # MasterCard
+- id:       2
+  name:     MasterCard
+  username: mastercard
+
+  # Diners Club
+- id:       3
+  name:     Diners Club
+  username: diners
+
+  # Discover
+- id:       4
+  name:     Discover
+  username: discover
+
+  # Elo
+- id:       5
+  name:     Elo
+  username: elo
+
+  # American Express
+- id:      6
+  name:     American Express
+  username: amex
+
+  # JCB
+- id:       7
+  name:     JCB
+  username: jcb
+
+  # Aura
+- id:       8
+  name:     Aura
+  username: aura

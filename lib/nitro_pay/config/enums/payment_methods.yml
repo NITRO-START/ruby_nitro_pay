@@ -1,0 +1,20 @@
+payment_methods:
+  # SampleObj
+- id:   0
+  name: Nil
+
+  # Credit
+- id:   1
+  name: Credit
+
+  # Debit
+- id:   2
+  name: Debit
+
+  # Installments shop
+- id:   3
+  name: Installments shop
+
+  # Installments administrator
+- id:   4
+  name: Installments administrator
