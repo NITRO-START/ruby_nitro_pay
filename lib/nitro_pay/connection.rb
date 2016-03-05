@@ -25,9 +25,10 @@ module NitroPay
       # If using test or Debug it is not production
       if params[:debug] || params[:test]
         self.protocol = 'http'
-        self.domain = 'localhost:7000'
+        self.domain = 'pay.dev:4000'
       else
-        self.protocol = 'https'
+        # TODO when add SSL to Production replace http to https
+        self.protocol = 'http'
         self.domain = 'pay.nitrostart.me'
       end
 
