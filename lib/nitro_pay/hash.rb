@@ -1,4 +1,4 @@
-# Override ruby Hash Obj
+# Overwrite ruby Hash Obj
 class Hash
   # Attr to be external accessible
   attr_accessor :get_url_params

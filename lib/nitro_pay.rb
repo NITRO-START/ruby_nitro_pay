@@ -6,7 +6,7 @@ require 'rest_client'
 require 'bigdecimal'
 require 'bigdecimal/util'
 
-# Overrides
+# Overwrites
 require 'nitro_pay/hash'
 require 'nitro_pay/array'
 

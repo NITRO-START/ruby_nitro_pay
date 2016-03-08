@@ -7,7 +7,7 @@ module NitroPay
     attr_accessor :protocol
     attr_accessor :end_point
     attr_accessor :api_version
-    attr_accessor :recurrent_rid
+    attr_accessor :recurrent_tid
     attr_accessor :request_params
     attr_accessor :end_point_versioned
 
@@ -39,7 +39,7 @@ module NitroPay
       # Dynamic env
       setup_default_app if params[:test_env]
       setup_attrs(params)
-      self.recurrent_rid = params[:rid] unless params[:rid].nil?
+      self.recurrent_tid = params[:tid] unless params[:tid].nil?
     end
 
     # Full URL for the last request
@@ -114,7 +114,7 @@ module NitroPay
         # Get the GlobalRecurrent & setup/config
         self.path = 'global_subscription'
         recurrence = get_json_request
-        self.recurrent_rid = recurrence[:rid]
+        self.recurrent_tid = recurrence[:tid]
 
         return puts 'Please run: rails g nitro_pay:install' if NitroPay.app_id.nil? || NitroPay.secret_key.nil?
         self.auth = {app_id:NitroPay.app_id, secret_key:NitroPay.secret_key}
