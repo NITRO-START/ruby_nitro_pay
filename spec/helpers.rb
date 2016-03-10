@@ -5,7 +5,7 @@ module Helpers
   end
 
   def accessible?(url)
-    RestClient.proxy = NitroPay.proxy if NitroPay.proxy.index('your_login').nil?
+    RestClient.proxy = NitroPay.proxy if NitroPay.proxy && NitroPay.proxy.index('your_login').nil?
     resp = RestClient.get url
     RestClient.proxy = nil
     resp.code == 200 ? true : false

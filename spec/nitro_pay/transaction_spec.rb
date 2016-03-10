@@ -111,7 +111,7 @@ describe NitroPay::Transaction do
                 brand: 'visa',
                 cvv: '123',
                 expiration_month: '05',
-                expiration_year: '2018',
+                expiration_year: (Date.today.year+2).to_s,
                 number: '4012001037141112',
                 holder: Faker::Name.name,
               },
@@ -129,6 +129,10 @@ describe NitroPay::Transaction do
           # ================    Tests/Expects/Should   ================
           it 'resp should not be null' do
             expect(@resp).to_not be_nil
+          end
+
+          it 'resp must not include error' do
+            expect(@resp).to_not include(:error)
           end
 
           it 'resp should contain the RequestID' do
@@ -600,8 +604,8 @@ describe NitroPay::Transaction do
             amount: Random.rand(99999).to_s,
             redirect_link: @redirect_link,
             brand: 'https://s3-sa-east-1.amazonaws.com/global-defaults/nitropay/alfred.png',
-            alert: 'Atenção. Você está comprando Créditos para serem usados quando este produto for lançado.',
-            description: 'Seu Robô Doméstico de baixo custo, alta eficiência e mais prático.'
+            alert: 'Atenção! Você está comprando créditos válidos somente para aquisição de itens do projeto AlfredRobots.',
+            description: '<strong>Projeto</strong>: Alfred Robots<br><strong>Tipo da Compra</strong>: Créditos para uso exclusivo neste projeto, após o lançamento do mesmo<br><strong>Descrição</strong>: Seu Robô doméstico de baixo custo, alta eficiência e mais prático.'
           }
 
           # Perform it page_checkout request
