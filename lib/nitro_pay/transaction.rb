@@ -33,7 +33,7 @@ module NitroPay
 
     # POST /api/transactions/page return operator page URL, like the Cielo Page
     def charge_page(full_resp=false)
-      custom_http_params
+      custom_http_params(skip_formatters=true)
       # SetUp redirect dynamic if is test
       self.request_params[:transaction][:redirect_link] = "#{self.redirect_link}" if self.request_params[:transaction][:test_env]
 

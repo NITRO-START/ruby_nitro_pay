@@ -132,8 +132,8 @@ module NitroPay
       end
 
       # HTTP requests must have '[]' on it key name to send Array
-      def custom_http_params
-        setup_format_and_validators
+      def custom_http_params(skip_formatters=false)
+        setup_format_and_validators unless skip_formatters
 
         return if self.sold_items.nil?
         self.sold_items.each_with_index do |sold_item, i|

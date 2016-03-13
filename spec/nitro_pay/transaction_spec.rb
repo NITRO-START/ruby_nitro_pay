@@ -601,7 +601,6 @@ describe NitroPay::Transaction do
 
           @checkout_page_params = {
             title: 'Alfred Robots',
-            amount: Random.rand(99999).to_s,
             redirect_link: @redirect_link,
             brand: 'https://s3-sa-east-1.amazonaws.com/global-defaults/nitropay/alfred.png',
             alert: 'Atenção! Você está comprando créditos válidos somente para aquisição de itens do projeto AlfredRobots.',
@@ -635,12 +634,6 @@ describe NitroPay::Transaction do
           tid = @checkout_transaction.tid
           expect(@resp).to include(:tid)
           expect(tid).to eq(@resp[:tid])
-        end
-
-        it 'resp amount must be equals the sent value' do
-          amount = @resp[:amount]
-          unformed_received_amount = @checkout_transaction.unformed_received_amount
-          expect(unformed_received_amount).to eq(@checkout_page_params[:amount])
         end
       end
     end
