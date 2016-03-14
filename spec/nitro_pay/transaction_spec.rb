@@ -629,12 +629,6 @@ describe NitroPay::Transaction do
           expect(checkout_page).to_not be_nil
           expect(accessible?(checkout_page)).to be_truthy
         end
-
-        it 'resp must contain the TID attr' do
-          tid = @checkout_transaction.tid
-          expect(@resp).to include(:tid)
-          expect(tid).to eq(@resp[:tid])
-        end
       end
     end
 
