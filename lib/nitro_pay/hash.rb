@@ -7,6 +7,14 @@ class Hash
   def it_keys_to_sym
     self.keys.each do |key|
       self[key].it_keys_to_sym if self[key].is_a?(Hash)
+
+      if self[key].is_a?(Array)
+        hashes = self[key]
+        hashes.each do |current_hash|
+          current_hash.it_keys_to_sym
+        end
+      end
+
       self[(key.to_sym rescue key) || key] = self.delete(key)
     end
 

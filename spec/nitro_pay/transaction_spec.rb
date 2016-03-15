@@ -165,12 +165,12 @@ describe NitroPay::Transaction do
 
           context 'verifiable trasaction' do
             before(:all) do
+              @store_transaction = NitroPay::Transaction.new tid: @resp[:tid]
               @verified = @store_transaction.verify
             end
 
             it 'resp must be a charged status' do
-              expect(@verified[:status][:code]).to eq(6)
-              expect(@verified[:status][:name]).to eq('charged')
+              expect(@verified[:status]).to eq('charged')
             end
 
             it 'resp must have an array of sold_items' do

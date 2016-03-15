@@ -21,7 +21,7 @@ module NitroPay
     # GET /api/transactions/:tid by it attr
     def verify
       auth_hash = {}
-      tid = self.resp[:tid]
+      !self.tid.nil? ? tid = self.tid : tid = self.resp[:tid]
       auth_hash[:auth] = self.request_params[:auth]
       if tid.nil? then return {error:'TID not received'} else self.path = "transactions/#{tid}#{auth_hash.it_keys_to_get_param}" end
       return self.get_json_request
