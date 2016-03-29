@@ -27,8 +27,7 @@ module NitroPay
         self.protocol = 'http'
         self.domain = 'pay.dev:4000'
       else
-        # TODO when add SSL to Production replace http to https
-        self.protocol = 'http'
+        self.protocol = 'https'
         self.domain = 'pay.nitrostart.me'
       end
 
