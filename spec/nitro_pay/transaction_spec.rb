@@ -441,11 +441,12 @@ describe NitroPay::Transaction do
             @transaction = NitroPay::Transaction.new tid: global_sample_transaction[:id]
 
             # Send Unsubscribe
-            @transaction_resp = @transaction.payment_history
+            @transactions_resp = @transaction.payment_history
+            @transaction_resp = @transactions_resp.first
           end
 
-          it 'should be a simple hash' do
-            expect(@transaction_resp).to be_a Hash
+          it 'should be a simple hash, just one register' do
+            expect(@transactions_resp.length).to eq(1)
           end
 
           it 'should not have any error' do
@@ -459,12 +460,7 @@ describe NitroPay::Transaction do
                 :created_at, :updated_at
             ]
 
-            invalid_keys = [
-                :next_transaction_at, :recurrence_period_id
-            ]
-
             valid_keys.each {|key| expect(@transaction_resp[key]).to_not be_nil}
-            invalid_keys.each {|key| expect(@transaction_resp[key]).to be_nil}
           end
         end
 
@@ -690,8 +686,8 @@ describe NitroPay::Transaction do
 
   context 'Remote sample connection test' do
     before(:all) do
-      NitroPay.debug=false
-      NitroPay.test_env=false
+      NitroPay.debug=true
+      NitroPay.test_env=true
       @remote = NitroPay::Status.new
     end
 

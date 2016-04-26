@@ -62,8 +62,7 @@ module NitroPay
 
     # Update the recurrence amount
     def update_subscription(tid=nil, full_resp=false)
-      # SetUp
-      self.recurrent_tid = tid if tid
+      setup_tid(tid)
       self.path = "transactions/#{self.recurrent_tid}/subscription"
 
       # Perform the request
@@ -75,8 +74,7 @@ module NitroPay
 
     # Stop a recurrence based on it transaction tid
     def unsubscribe(tid=nil, full_resp=false)
-      # SetUp
-      self.recurrent_tid = tid if tid
+      setup_tid(tid)
       self.path = "transactions/#{self.recurrent_tid}/subscription/unsubscribe"
 
       # Perform the request
@@ -88,8 +86,7 @@ module NitroPay
 
     # Return the payments executed for the purchase passed
     def payment_history(tid=nil, full_resp=false)
-      # SetUp
-      self.recurrent_tid = tid if tid
+      setup_tid(tid)
       self.path = "transactions/#{self.recurrent_tid}/subscription/payment_history"
       self.path = "#{self.path}#{self.request_params.it_keys_to_get_param}"
 
@@ -102,8 +99,7 @@ module NitroPay
 
     # Check if a subscription is up-to-date or have any pending
     def up_to_date(tid=nil, full_resp=false)
-      # SetUp
-      self.recurrent_tid = tid if tid
+      setup_tid(tid)
 
       # Create/customize the path & add the auth as param
       self.path = "transactions/#{self.recurrent_tid}/subscription/up-to-date"
@@ -119,6 +115,11 @@ module NitroPay
     # return it hash resp when resp is a string
     def hash_resp
       self.resp.is_a?(String) ? JSON.parse(self.resp).it_keys_to_sym : self.resp
+    end
+
+    # Set it TID up
+    def setup_tid(tid)
+      tid ? self.recurrent_tid = tid : self.recurrent_tid = get_global_subscription[:tid]
     end
 
     # ================ STATIC methods ================

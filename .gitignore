@@ -9,7 +9,6 @@ _yardoc
 .idea/
 .idea/*
 /pkg/
-lib/nitro_pay/config/proxy.yml
 coverage
 coverage/
 coverage/*

@@ -19,7 +19,6 @@ module NitroPay
 
       # Static part
       self.request_params = {transaction:params}
-      setup_config
       self.domain = 'pay.nitrostart.me'
 
       # If using test or Debug it is not production
@@ -37,6 +36,9 @@ module NitroPay
 
       # Dynamic env
       setup_default_app if params[:test_env]
+
+      # Setups
+      setup_config
       setup_attrs(params)
       self.recurrent_tid = params[:tid] unless params[:tid].nil?
     end
@@ -109,15 +111,13 @@ module NitroPay
         app = get_json_request[:app]
         NitroPay.app_id = app[:id]
         NitroPay.secret_key = app[:secret]
+      end
 
-        # Get the GlobalRecurrent & setup/config
+      # get global subscription
+      def get_global_subscription
+        # setup test_subscription path
         self.path = 'global_subscription'
-        recurrence = get_json_request
-        self.recurrent_tid = recurrence[:tid]
-
-        return puts 'Please run: rails g nitro_pay:install' if NitroPay.app_id.nil? || NitroPay.secret_key.nil?
-        self.auth = {app_id:NitroPay.app_id, secret_key:NitroPay.secret_key}
-        self.request_params.merge!(auth:self.auth)
+        get_json_request
       end
 
       # SetUp all attrs
